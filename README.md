@@ -42,6 +42,27 @@ Then open the local URL printed by Vite. A production build can be checked with:
 npm run build
 ```
 
+## Deploy the frontend on Vercel
+
+The React/Vite frontend can be deployed to Vercel's free tier directly from
+the [GitHub repository](https://github.com/jaybutle/terraquest-ai):
+
+1. Import `jaybutle/terraquest-ai` into Vercel.
+2. Keep the detected framework as Vite.
+3. Use `npm run build` as the build command.
+4. Use `dist` as the output directory.
+5. Deploy without setting `VITE_API_URL` for the frontend-only demo.
+
+In this frontend-only deployment, the public site uses the clearly labeled
+`Curated local guide` when its API is unavailable. The live Vercel site does
+not claim to run Gemma. Ollama on a personal computer is not reachable by
+Vercel visitors.
+
+To enable live AI generation later, deploy the Express API separately on a
+server that can reach Ollama (or another hosted model), then set
+`VITE_API_URL` in Vercel to that API's HTTPS origin. Configure that API's
+`CLIENT_ORIGIN` to the Vercel URL. Never commit API keys or `.env` files.
+
 ## Open-weight AI and Ollama
 
 The app sends only quest preferences to the local Express API. The API validates input, asks Gemma for JSON, validates the required quest shape, and returns a labeled result. Journal content and browser storage are not sent to the model. If Ollama is unavailable, the frontend uses a clearly labeled curated guide instead.

@@ -9,5 +9,6 @@
 7. Disable network access and verify saved quests and journal records remain available.
 8. Change accessibility settings and confirm new quests inherit the preferences.
 9. With `ollama pull gemma3:4b`, run `npm run server` and verify the API response is labeled `Quest Council · Gemma`.
+10. For the Vercel frontend-only deployment, verify the live site loads on desktop and mobile, displays `Curated local guide` when the API is not configured, and does not claim that live Gemma generation is available.
 
 Model generation, unsafe-output rejection, and service-worker behavior require the corresponding local setup and should not be reported as passed without running those checks.
